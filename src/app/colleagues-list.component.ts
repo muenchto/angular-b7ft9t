@@ -47,4 +47,8 @@ export class ColleagesList implements OnInit {
     });
     return { filteredCols, hidden };
   }
+
+  makeListLine(col: Colleagues) {
+    return col.name + ' (' + col.skill + ')';
+  }
 }
