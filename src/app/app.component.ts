@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
-interface Collegues {
+export interface Colleagues {
+  id: number;
   name: String;
   skill: any;
 }
@@ -9,15 +9,8 @@ interface Collegues {
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: [],
 })
-export class AppComponent implements OnInit {
-  public url = '/api/colleagues';
-
-  constructor(http: HttpClient) {}
-
-  ngOnInit() {
-    this.http.get<Colleagues[]>(this.url);
-  }
-  name = 'Angular';
+export class AppComponent {
+  public hiddenColleagues = [11, 12];
 }

@@ -1,13 +1,23 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { HelloComponent } from './hello.component';
+import { ColleagesList } from './colleagues-list.component';
+import { HttpClientModule } from '@angular/common/http';
+import { InMemoryDataService } from './in-mem-db';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule ],
-  declarations: [ AppComponent, HelloComponent ],
-  bootstrap:    [ AppComponent ]
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
+      dataEncapsulation: false,
+      delay: 300,
+      passThruUnknownUrl: true,
+    }),
+  ],
+  declarations: [AppComponent, ColleagesList],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
